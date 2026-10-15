@@ -7,7 +7,7 @@
     <AssemblyName>Tweakmania</AssemblyName>
     <AssemblyTitle>Tweakmania</AssemblyTitle>
     <Product>Tweakmania</Product>
-    <Version>0.3.1</Version>
+    <Version>1.0.0</Version>
     <Description>Live controller calibration and response curves</Description>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
