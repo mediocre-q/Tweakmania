@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <PlatformTarget>x64</PlatformTarget>
+    <AssemblyName>Tweakmania</AssemblyName>
+    <AssemblyTitle>Tweakmania</AssemblyTitle>
+    <Product>Tweakmania</Product>
+    <Version>0.3.1</Version>
+    <Description>Live controller calibration and response curves</Description>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <EnableUiSmokeTests Condition="'$(EnableUiSmokeTests)' == '' and Exists('UiSmokeTests.cs')">true</EnableUiSmokeTests>
+    <DefineConstants Condition="'$(EnableUiSmokeTests)' == 'true'">$(DefineConstants);UI_SMOKE_TESTS</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(EnableUiSmokeTests)' != 'true'">
+    <Compile Remove="UiSmokeTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Tweak.Core/Tweak.Core.csproj" />
+    <ProjectReference Include="../Tweak.Runtime/Tweak.Runtime.csproj" />
+    <Content Include="../../native/build/x86/dinput8.dll" Condition="Exists('../../native/build/x86/dinput8.dll')"
+             Link="native/x86/dinput8.dll" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

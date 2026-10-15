@@ -1,0 +1,25 @@
+# Generated builds and local release packages
+**/bin/
+**/obj/
+/dist/
+/artifacts/
+/native/build/
+
+# Local investigation, tests, and planning material
+/tools/
+/tests/
+/Test.ps1
+/native/native_tests.cpp
+/native/real_probe.cpp
+/native/cross_vectors.cpp
+/src/Tweak.App/InputProbe.cs
+/src/Tweak.App/UiSmokeTests.cs
+*.log
+*.trace.json
+
+# IDE and user-specific files
+/.vs/
+*.user
+*.suo
+**/__pycache__/
+*.py[cod]

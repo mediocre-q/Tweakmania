@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "name": "Precision steering",
+  "inputMinimum": -1,
+  "inputCenter": 0,
+  "inputMaximum": 1,
+  "deadzone": 0,
+  "saturation": 1,
+  "invert": false,
+  "mirror": true,
+  "leftCurve": [{ "input": 0, "output": 0 }, { "input": 1, "output": 1 }],
+  "rightCurve": [
+    { "input": 0, "output": 0 },
+    { "input": 0.25, "output": 0.10 },
+    { "input": 0.50, "output": 0.32 },
+    { "input": 0.75, "output": 0.64 },
+    { "input": 1, "output": 1 }
+  ]
+}
