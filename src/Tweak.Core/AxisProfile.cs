@@ -29,8 +29,8 @@ public sealed record AxisProfile
         RequireFinite(InputMinimum, nameof(InputMinimum));
         RequireFinite(InputCenter, nameof(InputCenter));
         RequireFinite(InputMaximum, nameof(InputMaximum));
-        if (InputMinimum < -1 || InputMinimum > 1 || InputCenter < -1 || InputCenter > 1 || InputMaximum < -1 || InputMaximum > 1)
-            throw new ArgumentException("Calibration values must be in [-1, 1].");
+        if (InputMinimum < -2 || InputMinimum > 2 || InputCenter < -1 || InputCenter > 1 || InputMaximum < -2 || InputMaximum > 2)
+            throw new ArgumentException("Calibration endpoints must be in [-200, 200] and center must be in [-100, 100].");
         if (!(InputMinimum < InputCenter && InputCenter < InputMaximum))
             throw new ArgumentException("Calibration must satisfy InputMinimum < InputCenter < InputMaximum.");
 

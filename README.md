@@ -8,7 +8,7 @@ A Windows controller calibration and steering-curve editor for Trackmania United
 
 Compared with the well-known DXTweak tool, once the proxy is loaded Tweakmania lets you change calibration without restarting the game or reconnecting the controller. Its response curves reshape steering without requiring you to restrict the controller's steering range.
 
-The editor provides live calibration, independent left and right response curves, deadzone and saturation controls, bypass, and JSON profiles. Routing starts only when enabled. The x64 editor packages the x86 game proxy.
+The editor provides live calibration, independent left and right response curves, deadzone and saturation controls, bypass, and JSON profiles. Calibration endpoints can be set from -200% to +200%, while center remains within -100% to +100%. An endpoint above 100% extends the travel needed for full output: for example, a 125% positive maximum maps full physical travel to 80% output. Routing starts only when enabled. The x64 editor packages the x86 game proxy.
 
 ## Download and run
 

@@ -54,7 +54,8 @@ static bool ValidateConfig(const ConfigWire& c) {
         c.leftCount < 2 || c.leftCount > 32 || c.rightCount < 2 || c.rightCount > 32 ||
         !finite(c.minimum) || !finite(c.center) || !finite(c.maximum) ||
         !finite(c.deadzone) || !finite(c.saturation) ||
-        !(c.minimum < c.center && c.center < c.maximum) || c.minimum < -1 || c.maximum > 1 ||
+        !(c.minimum < c.center && c.center < c.maximum) ||
+        c.minimum < -2 || c.minimum > 2 || c.center < -1 || c.center > 1 || c.maximum < -2 || c.maximum > 2 ||
         c.deadzone < 0 || c.deadzone >= c.saturation || c.saturation > 1) return false;
     for (uint32_t side = 0; side < 2; ++side) {
         const Point* p = side ? c.right : c.left;
