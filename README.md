@@ -10,15 +10,9 @@ Compared with the well-known DXTweak tool, once the proxy is loaded Tweakmania l
 
 The editor provides live calibration, independent left and right response curves, deadzone and saturation controls, bypass, and JSON profiles. Calibration endpoints can be set from -200% to +200%, while center remains within -100% to +100%. An endpoint above 100% extends the travel needed for full output: for example, a 125% positive maximum maps full physical travel to 80% output. Routing starts only when enabled. The x64 editor packages the x86 game proxy.
 
-## Download and run
+## User guide
 
-Download and extract the portable release, then start `Tweakmania.exe`. The English-only package bundles the .NET runtime and application libraries into the compressed executable; no separate .NET installation is needed. Keep the accompanying `native` folder beside it. On first launch, Tweakmania selects the highest-version TmForever executable installed by TMLoader. If no TMLoader copy is found, it looks for the original TrackMania United Forever installation. You can also browse to another x86 game executable.
-
-Choose the DirectInput controller and steering axis, then choose **Install proxy**. Start or restart the game through TMLoader. Tweakmania keeps the proxy beside the selected game executable and removes it only when its ownership record matches. Existing controller bindings remain in use.
-
-If Microsoft Defender flags the proxy or game, add the game installation directory to Windows Security's exclusion list, then restore or reinstall the proxy if Defender removed it. Only exclude a game directory you trust.
-
-Start routing with **Apply in game**. **Live preview** is optional and can be turned off while routing continues. **Stop** disables transformation. Use the profile toolbar to create, duplicate, rename, switch, and save profiles; unsaved drafts are kept separately for each profile and recover after a normal restart. **More** contains import, export, revert, and delete. Game executable and proxy installation options are under **Setup…**. Profiles and settings are stored under `%LOCALAPPDATA%\ControllerTweak`; existing `last-profile.json` settings migrate into the library on first launch and remain as a recovery copy.
+See [INSTRUCTIONS.md](INSTRUCTIONS.md) for end-to-end setup, calibration tips, Windows Defender guidance, and update instructions. The portable release ships this user guide instead of this technical README.
 
 This tool targets x86 DirectInput 8 games such as TMUF. It does not transform XInput calls or change controller behavior globally. The proxy changes only the selected absolute axis; other device inputs are forwarded.
 
@@ -30,7 +24,7 @@ Requirements: Windows x64, .NET 8 SDK, PowerShell 7, LLVM `clang-cl`/`lld-link`,
 ./Build.ps1
 ```
 
-This creates a self-contained portable package in `dist/Tweakmania-<version>-portable` and a GitHub-ready `dist/Tweakmania-<version>-win-x64.zip`. Runtime and application DLLs are bundled into the compressed `Tweakmania.exe`, with English resources only and no debug symbols. The package also includes the x86 proxy at `native/x86/dinput8.dll`, sample profiles, the license, and third-party notices (runtime notices are in `licenses`). WPF does not support trimming, so the portable package retains the desktop runtime. Native runtime libraries are extracted under `%TEMP%/.net` on first launch.
+This creates a self-contained portable package in `dist/Tweakmania-<version>-portable` and a GitHub-ready `dist/Tweakmania-<version>-win-x64.zip`. Runtime and application DLLs are bundled into the compressed `Tweakmania.exe`, with English resources only and no debug symbols. The package also includes `INSTRUCTIONS.md`, the x86 proxy at `native/x86/dinput8.dll`, sample profiles, the license, and third-party notices (runtime notices are in `licenses`). WPF does not support trimming, so the portable package retains the desktop runtime. Native runtime libraries are extracted under `%TEMP%/.net` on first launch.
 
 For a much smaller download, the framework-dependent option requires the x64 .NET 8 Desktop Runtime to be installed:
 

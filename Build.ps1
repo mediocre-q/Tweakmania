@@ -13,7 +13,9 @@ dotnet publish $taskProject -c Release -r win-x64 -p:SelfContained=$selfContaine
     -p:EnableCompressionInSingleFile=$selfContained -p:SatelliteResourceLanguages=en `
     -p:DebugType=None -p:DebugSymbols=false -p:EnableUiSmokeTests=false
 if ($LASTEXITCODE -ne 0) { throw 'Publish failed.' }
-Copy-Item -LiteralPath (Join-Path $taskRoot 'README.md'),(Join-Path $taskRoot 'LICENSE'),(Join-Path $taskRoot 'THIRD-PARTY-NOTICES.md') -Destination $taskOutput
+$taskTechnicalReadme = Join-Path $taskOutput 'README.md'
+if (Test-Path -LiteralPath $taskTechnicalReadme) { Remove-Item -LiteralPath $taskTechnicalReadme -Force }
+Copy-Item -LiteralPath (Join-Path $taskRoot 'INSTRUCTIONS.md'),(Join-Path $taskRoot 'LICENSE'),(Join-Path $taskRoot 'THIRD-PARTY-NOTICES.md') -Destination $taskOutput
 New-Item -ItemType Directory -Path (Join-Path $taskOutput 'native\x86') -Force | Out-Null
 Copy-Item -LiteralPath (Join-Path $taskRoot 'native\build\x86\dinput8.dll') -Destination (Join-Path $taskOutput 'native\x86\dinput8.dll') -Force
 New-Item -ItemType Directory -Path (Join-Path $taskOutput 'profiles') -Force | Out-Null
