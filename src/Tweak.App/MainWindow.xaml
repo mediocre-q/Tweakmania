@@ -32,11 +32,14 @@
             <Setter Property="Width" Value="14" />
             <Setter Property="Height" Value="14" />
             <Setter Property="CornerRadius" Value="7" />
+            <Setter Property="Background" Value="Transparent" />
             <Setter Property="BorderBrush" Value="{StaticResource CyanBrush}" />
             <Setter Property="BorderThickness" Value="1" />
             <Setter Property="Margin" Value="5,0,0,2" />
             <Setter Property="Cursor" Value="Help" />
             <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="ToolTipService.InitialShowDelay" Value="100" />
+            <Setter Property="ToolTipService.ShowDuration" Value="30000" />
         </Style>
         <Style TargetType="TextBox">
             <Setter Property="Foreground" Value="#F3F8FB" />
@@ -263,7 +266,7 @@
                                     <TextBlock Text="The graph maps stick movement to steering in-game. Shape the middle of the curve for gentler or sharper response while keeping full steering available." Style="{StaticResource MutedText}" Margin="0,3,0,0" TextWrapping="Wrap" />
                                 </StackPanel>
                                 <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
-                                    <CheckBox Content="Mirror left/right" IsChecked="{Binding Mirror}" Margin="0,0,14,0" ToolTip="Use the same response curve when steering left and right. Turn this off to tune each direction separately." />
+                                    <CheckBox Content="Mirror left/right" IsChecked="{Binding Mirror}" Margin="0,0,14,0" ToolTip="Use the same response curve when steering left and right. Turn this off to tune each direction separately." ToolTipService.InitialShowDelay="100" />
                                     <TextBlock Text="Editing:" Style="{StaticResource MutedText}" Margin="0,0,6,0" />
                                     <ComboBox ItemsSource="{Binding CurveSides}" SelectedItem="{Binding EditingSide, Mode=TwoWay}" Width="92" Padding="6,3">
                                         <ComboBox.Style><Style TargetType="ComboBox" BasedOn="{StaticResource {x:Type ComboBox}}"><Style.Triggers><DataTrigger Binding="{Binding Mirror}" Value="True"><Setter Property="IsEnabled" Value="False" /></DataTrigger></Style.Triggers></Style></ComboBox.Style>
@@ -314,10 +317,7 @@
 
                     <Border Background="{StaticResource PanelBrush}" BorderBrush="{StaticResource LineBrush}" BorderThickness="1" CornerRadius="14" Padding="12" Margin="0,0,0,8">
                         <StackPanel>
-                            <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
-                                <TextBlock Text="Calibration" FontSize="17" FontWeight="SemiBold" />
-                                <Border Style="{StaticResource InfoBadge}" ToolTip="Calibration tells the game where your controller's center and steering limits are. Adjust center to correct drift, or change the endpoints if your controller does not reach its full physical range."><TextBlock Text="i" Foreground="{StaticResource CyanBrush}" FontSize="9" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border>
-                            </StackPanel>
+                            <TextBlock Text="Calibration" FontSize="17" FontWeight="SemiBold" Margin="0,0,0,4" />
                             <Grid>
                                 <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="10"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
@@ -341,7 +341,7 @@
                                     <StackPanel Orientation="Horizontal"><TextBlock Text="SATURATION %" Style="{StaticResource FieldLabel}" Margin="0"/><Border Style="{StaticResource InfoBadge}" ToolTip="The point in the stick's travel where full steering is reached. Lower this if damage or stick wear stops the controller reaching its physical limit. For example, 80% lets the stick reach full steering after using 80% of its calibrated travel."><TextBlock Text="i" Foreground="{StaticResource CyanBrush}" FontSize="9" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border></StackPanel>
                                     <TextBox Text="{Binding SaturationText, UpdateSourceTrigger=PropertyChanged}" Padding="8,5" />
                                 </StackPanel>
-                                <Button Grid.Row="2" Grid.Column="2" Content="Center now" Command="{Binding CenterCommand}" VerticalAlignment="Bottom" ToolTip="Set the calibrated center to your controller's current position. Let the stick rest where you want straight ahead before clicking." />
+                                <Button Grid.Row="2" Grid.Column="2" Content="Center now" Command="{Binding CenterCommand}" VerticalAlignment="Bottom" ToolTip="Set the calibrated center to your controller's current position. Let the stick rest where you want straight ahead before clicking." ToolTipService.InitialShowDelay="100" />
                             </Grid>
                         </StackPanel>
                     </Border>
@@ -349,8 +349,8 @@
                     <Border Background="{StaticResource PanelBrush}" BorderBrush="{StaticResource LineBrush}" BorderThickness="1" CornerRadius="14" Padding="12" Margin="0,0,0,8">
                         <StackPanel>
                             <StackPanel Orientation="Horizontal"><TextBlock Text="Tuning" FontSize="17" FontWeight="SemiBold"/><Border Style="{StaticResource InfoBadge}" ToolTip="Extra controls for changing or temporarily disabling how steering input is interpreted."><TextBlock Text="i" Foreground="{StaticResource CyanBrush}" FontSize="9" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border></StackPanel>
-                            <CheckBox Content="Bypass curve" IsChecked="{Binding Bypass}" Margin="0,7,0,6" ToolTip="Temporarily send calibrated steering directly to the game without applying the response curve. Useful for comparing your curve with a straight, linear response." />
-                            <CheckBox Content="Invert steering" IsChecked="{Binding Invert}" ToolTip="Swap left and right steering if the direction is reversed." />
+                            <CheckBox Content="Bypass curve" IsChecked="{Binding Bypass}" Margin="0,7,0,6" ToolTip="Temporarily send calibrated steering directly to the game without applying the response curve. Useful for comparing your curve with a straight, linear response." ToolTipService.InitialShowDelay="100" />
+                            <CheckBox Content="Invert steering" IsChecked="{Binding Invert}" ToolTip="Swap left and right steering if the direction is reversed." ToolTipService.InitialShowDelay="100" />
                             <Button Content="Reset settings" Command="{Binding ResetCommand}" HorizontalAlignment="Left" Margin="0,8,0,0" Padding="9,5" />
                         </StackPanel>
                     </Border>
