@@ -248,7 +248,10 @@
                             <Grid Margin="0,0,0,8">
                                 <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
                                 <StackPanel>
-                                    <TextBlock Text="Steering response" FontSize="17" FontWeight="SemiBold" />
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Steering response" FontSize="17" FontWeight="SemiBold" />
+                                        <Border Style="{StaticResource InfoBadge}" ToolTip="For the best performance, turn off Live preview after testing. To see the preview while playing, run the game in windowed mode or keep Tweakmania open on a second screen."><TextBlock Text="i" Foreground="{StaticResource CyanBrush}" FontSize="9" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border>
+                                    </StackPanel>
                                     <TextBlock Text="{Binding PreviewStatus}" Style="{StaticResource MutedText}" Margin="0,3,0,0" />
                                 </StackPanel>
                                 <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
