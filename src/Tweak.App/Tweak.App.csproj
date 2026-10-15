@@ -22,6 +22,7 @@
     <ProjectReference Include="../Tweak.Core/Tweak.Core.csproj" />
     <ProjectReference Include="../Tweak.Runtime/Tweak.Runtime.csproj" />
     <Content Include="../../native/build/x86/dinput8.dll" Condition="Exists('../../native/build/x86/dinput8.dll')"
-             Link="native/x86/dinput8.dll" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+             Link="native/x86/dinput8.dll" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest"
+             ExcludeFromSingleFile="true" />
   </ItemGroup>
 </Project>

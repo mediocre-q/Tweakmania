@@ -12,7 +12,7 @@ The editor provides live calibration, independent left and right response curves
 
 ## Download and run
 
-Download and extract the portable release, then start `Tweakmania.exe`. On first launch, Tweakmania selects the highest-version TmForever executable installed by TMLoader. If no TMLoader copy is found, it looks for the original TrackMania United Forever installation. You can also browse to another x86 game executable.
+Download and extract the portable release, then start `Tweakmania.exe`. The English-only package bundles the .NET runtime and application libraries into the compressed executable; no separate .NET installation is needed. Keep the accompanying `native` folder beside it. On first launch, Tweakmania selects the highest-version TmForever executable installed by TMLoader. If no TMLoader copy is found, it looks for the original TrackMania United Forever installation. You can also browse to another x86 game executable.
 
 Choose the DirectInput controller and steering axis, then choose **Install proxy**. Start or restart the game through TMLoader. Tweakmania keeps the proxy beside the selected game executable and removes it only when its ownership record matches. Existing controller bindings remain in use.
 
@@ -30,11 +30,15 @@ Requirements: Windows x64, .NET 8 SDK, PowerShell 7, LLVM `clang-cl`/`lld-link`,
 ./Build.ps1
 ```
 
-This creates a self-contained portable package in `dist/Tweakmania-<version>` and a GitHub-ready `dist/Tweakmania-<version>-win-x64.zip`. The package includes `Tweakmania.exe`, the x86 proxy at `native/x86/dinput8.dll`, sample profiles, the license, and third-party notices. The framework-dependent option requires the .NET 8 Desktop Runtime:
+This creates a self-contained portable package in `dist/Tweakmania-<version>-portable` and a GitHub-ready `dist/Tweakmania-<version>-win-x64.zip`. Runtime and application DLLs are bundled into the compressed `Tweakmania.exe`, with English resources only and no debug symbols. The package also includes the x86 proxy at `native/x86/dinput8.dll`, sample profiles, the license, and third-party notices (runtime notices are in `licenses`). WPF does not support trimming, so the portable package retains the desktop runtime. Native runtime libraries are extracted under `%TEMP%/.net` on first launch.
+
+For a much smaller download, the framework-dependent option requires the x64 .NET 8 Desktop Runtime to be installed:
 
 ```powershell
 ./Build.ps1 -FrameworkDependent
 ```
+
+This produces `dist/Tweakmania-<version>-framework-dependent` and `dist/Tweakmania-<version>-win-x64-framework-dependent.zip`, separately from the portable release. Both builds have a single executable at the package root. Extract into a fresh folder when upgrading from older packages with loose DLLs.
 
 The package can be attached to a GitHub release as a zip. Do not publish the local `artifacts`, `dist`, `tests`, or `tools` folders; they contain generated output and development-only material.
 

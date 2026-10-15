@@ -2,7 +2,7 @@
 
 - **Vortice.DirectInput / Vortice.DirectX 3.8.3** — [Vortice.Windows](https://github.com/amerkoleci/Vortice.Windows), copyright Amer Koleci and contributors, MIT license: https://github.com/amerkoleci/Vortice.Windows/blob/main/LICENSE . Used as a managed binding to Windows DirectInput; distributed through NuGet with the application.
 - **SharpGen.Runtime / SharpGen.Runtime.COM 2.4.2-beta** — [SharpGenTools](https://github.com/SharpGenTools/SharpGenTools), MIT license: https://github.com/SharpGenTools/SharpGenTools/blob/main/LICENSE.txt . Transitive runtime dependencies of Vortice.
-- **.NET 8 Windows Desktop Runtime** — Microsoft and contributors; MIT and other notices distributed in the self-contained runtime. See `Microsoft.NETCore.App-*` and `Microsoft.WindowsDesktop.App-*` license/notice files in the published folder.
+- **.NET 8 Windows Desktop Runtime** — Microsoft and contributors; MIT and other notices distributed in the self-contained runtime. See `Microsoft.NETCore.App-*` and `Microsoft.WindowsDesktop.App-*` license/notice files in the published `licenses` folder.
 
 The DirectInput proxy uses Windows SDK interface declarations and dynamically calls the installed Microsoft system DLL, which is not bundled. WiiInput is neither bundled nor referenced. HidHide is not required; legacy code remains for recovery of prior Controller Tweak hiding leases.
 
